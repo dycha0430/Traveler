@@ -1,6 +1,8 @@
 package com.example.traveler
-import android.app.ActionBar
-
+import android.util.Log
 
 class MainActivity {
+    fun print() {
+        Log.d("TAG", "Hello world")
+    }
 }
