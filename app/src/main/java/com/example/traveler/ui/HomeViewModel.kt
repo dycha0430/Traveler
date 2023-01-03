@@ -7,10 +7,13 @@ import com.example.traveler.base.BaseViewModel
 import com.example.traveler.base.Event
 import com.example.traveler.model.TripPlan
 import com.example.traveler.usecase.GetAllTripPlansUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel constructor(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val getAllTripPlansUseCase: GetAllTripPlansUseCase
 ) : BaseViewModel() {
     private val _tripPlans = MutableLiveData<ArrayList<TripPlan>>()

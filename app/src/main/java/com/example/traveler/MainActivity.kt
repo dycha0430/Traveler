@@ -14,11 +14,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.container.id, HomeFragment())
+                .replace(R.id.container, HomeFragment())
                 .commitNow()
         }
     }
