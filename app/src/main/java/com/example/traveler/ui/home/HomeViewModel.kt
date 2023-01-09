@@ -19,6 +19,9 @@ class HomeViewModel @Inject constructor(
     private val _tripPlans = MutableLiveData<ArrayList<TripPlan>>()
     val tripPlans: LiveData<ArrayList<TripPlan>> = _tripPlans
 
+    private val _selectedTripPlan = MutableLiveData<TripPlan>()
+    val selectedTripPlan: LiveData<TripPlan> = _selectedTripPlan
+
     fun loadAllTripPlans() {
         _loadingEvent.value = Event(false)
         viewModelScope.launch {
@@ -28,5 +31,9 @@ class HomeViewModel @Inject constructor(
                 _tripPlans.value = list
             }
         }
+    }
+
+    fun clickTripPlan(tripPlanIdx: Int) {
+        _selectedTripPlan.value = tripPlans.value?.get(tripPlanIdx)
     }
 }

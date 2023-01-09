@@ -17,9 +17,14 @@ enum class STATE (private val state_str: String) {
 data class TripPlan(
     val id: Int,
     val title: String,
-    val destination: String, // TODO
+    val destination: Destination, // TODO
     val state: STATE,
     val startDate: Date,
     val endDate: Date,
     val participants: List<User>
+)
+
+data class Destination(
+    val name: String,
+    val imageUrl: String,
 )

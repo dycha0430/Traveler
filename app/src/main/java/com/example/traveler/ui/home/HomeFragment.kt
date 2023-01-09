@@ -3,6 +3,8 @@ package com.example.traveler.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.base.BaseFragment
 import com.example.traveler.databinding.HomeFragmentBinding
@@ -12,7 +14,19 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
     override val viewModel by activityViewModels<HomeViewModel>()
 
-    private val allTripPlansAdapter: AllTripPlansAdapter = AllTripPlansAdapter()
+    private val allTripPlansAdapter: AllTripPlansAdapter = AllTripPlansAdapter(object: AllTripPlansAdapter.OnClickTripPlanListener {
+        override fun onClick(tripPlanIdx: Int) {
+            viewModel.clickTripPlan(tripPlanIdx)
+            navigateToDetailPlanFragment()
+        }
+    })
+
+    private fun navigateToDetailPlanFragment() {
+        val navDirection: NavDirections = HomeFragmentDirections.actionHomeFragmentToDetailPlanFragment()
+        val navController = findNavController()
+
+        navController.navigate(navDirection)
+    }
 
     override fun initUi() {
         with(binding) {

@@ -9,6 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,34 +34,25 @@
                 tools:srcCompat="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
 
-        <ImageView
-            android:id="@+id/locIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp" />
-
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="제주"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/locIcon"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:text=" 여행"
-            android:layout_marginTop="15dp"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/titleTextView"
@@ -70,50 +62,50 @@
             android:id="@+id/destinationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="제주도"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:text="제주도"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/locIcon" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="22/01/03~22/01/08"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:text="22/01/03~22/01/08"
             app:layout_constraintStart_toEndOf="@+id/destinationTextView"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
         <TextView
             android:id="@+id/stateTextView"
-            android:background="@color/trip_ing"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@color/trip_ing"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="여행중"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/destinationTextView"
-            android:textSize="10sp"
-            android:text="여행중"/>
+            app:layout_constraintTop_toBottomOf="@+id/destinationTextView" />
 
         <TextView
             android:id="@+id/participantsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다윤님 외 3명"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:text="다윤님 외 3명"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/stateTextView"
             app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
