@@ -1,19 +1,26 @@
-package com.example.traveler.ui
+package com.example.traveler.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.traveler.base.BaseFragment
 import com.example.traveler.databinding.HomeFragmentBinding
-import com.example.traveler.model.TripPlan
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
     override val viewModel by activityViewModels<HomeViewModel>()
 
-    private fun renderTripPlans(tripPlans: List<TripPlan>) {
-        val a = 1
+    private val allTripPlansAdapter: AllTripPlansAdapter = AllTripPlansAdapter()
+
+    override fun initUi() {
+        with(binding) {
+            allTripPlanRecyclerView.apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                adapter = allTripPlansAdapter
+            }
+        }
     }
 
     override fun loadData() {
@@ -23,7 +30,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
     override fun observeUi() {
         with(viewModel) {
             observe(tripPlans) {
-                renderTripPlans(it)
+                allTripPlansAdapter.submitList(it)
             }
 
             observeEvent(loadingEvent) {

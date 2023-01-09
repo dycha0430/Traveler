@@ -14,6 +14,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     val binding get() = _binding!!
     protected abstract val viewModel: VM
 
+    protected abstract fun initUi()
     protected abstract fun observeUi()
     protected abstract fun loadData()
     abstract fun getBinding(inflater: LayoutInflater, container: ViewGroup?): VB
@@ -34,6 +35,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUi()
         loadData()
         observeUi()
     }

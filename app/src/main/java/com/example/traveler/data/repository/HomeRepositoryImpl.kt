@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 val user1 = User("차다윤", listOf())
-val tripPlans = listOf(TripPlan("즐거운 여행", "부산", STATE.PREPARING, Date(10), Date(20), listOf(user1)))
+val tripPlans = listOf(TripPlan(0, "즐거운", "부산", STATE.PREPARING, Date(), Date(), listOf(user1)))
 @Singleton
 class HomeRepositoryImpl @Inject constructor() : HomeRepository {
     override fun getAllTripPlans(): Flow<List<TripPlan>> {

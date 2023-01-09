@@ -1,4 +1,4 @@
-package com.example.traveler.ui
+package com.example.traveler.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
