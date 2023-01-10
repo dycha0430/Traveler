@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="trip_prepare">#FFFCBA03</color>
+    <color name="trip_ing">#FF6E94EB</color>
+    <color name="trip_done">#FF909091</color>
+    <color name="main_color">#FF5A94EF</color>
+    <color name="cursorColor">#FF87C1FF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="sky_blue">#FFB5D9FF</color>
+    <color name="light_gray">#99D6D6D6</color>
+    <color name="red">#FFFF3333</color>
 </resources>
