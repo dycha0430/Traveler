@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+<!--    <uses-permission android:name="android.permission.INTERNET"/>-->
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
+<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -13,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Traveler"
         tools:targetApi="31" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBk3gYeMmX69IDOS7ihk9RY7n0Uzu0a8J8"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:backgroundTint="@color/main_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/detail_title_padding"
+            android:paddingBottom="@dimen/detail_title_padding"
+            android:paddingLeft="@dimen/detail_title_padding">
+
+            <TextView
+                android:id="@+id/detailTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="90dp"
+                android:background="@null"
+                android:singleLine="true"
+                android:text="제주도"
+                android:textColor="@color/white"
+                android:textSize="@dimen/detail_title_size"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 여행"
+                android:textColor="@color/white"
+                android:textSize="@dimen/detail_title_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailStateTextView"
+                android:background="@color/trip_prepare"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:padding="10dp"
+                android:textSize="10sp"
+                android:text="여행중"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/datePickerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/outline_bg"
+                android:textSize="13sp"
+                android:layout_marginLeft="15dp"
+                android:padding="10dp"
+                android:text="22.01.02 ~ 22.01.03"
+                />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.MapFragment"/>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

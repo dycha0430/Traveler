@@ -8,7 +8,6 @@ import com.example.traveler.base.Event
 import com.example.traveler.model.TripPlan
 import com.example.traveler.usecase.GetAllTripPlansUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
