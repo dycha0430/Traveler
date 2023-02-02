@@ -2,23 +2,36 @@ package com.example.traveler.ui.home
 
 import android.content.Context
 import android.location.Geocoder
-import android.util.Log
+import android.widget.Toast
+import com.example.traveler.R
+import com.example.traveler.model.Destination
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import java.util.*
 
-class MapController constructor(private val context: Context) : OnMapReadyCallback {
+class MapController constructor(private val context: Context, private val destination: Destination) : OnMapReadyCallback {
+    private lateinit var googleMap: GoogleMap
     private var geocoder = Geocoder(context, Locale.getDefault())
-    private val zoom: Float = 15F
+    private val zoom: Float = 5F
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        val location = getLatLngFromName("대한민국 인천광역시 남동구 구월동")
-        if (location != null) {
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoom))
-//            googleMap.animateCamera(CameraUpdateFactory.zoomTo(zoom))
+    override fun onMapReady(gMap: GoogleMap) {
+        googleMap = gMap
+        val latLng = getLatLngFromName(destination.name)
+        if (latLng != null) {
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom*2))
         }
+    }
+
+    fun moveMap(address: String) {
+        val latLng = getLatLngFromName(address)
+        if (latLng == null) {
+            Toast.makeText(context, context.getString(R.string.error_find_location), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom*3))
     }
 
     private fun getNameFromLatLng(latitude: Double, longitude: Double): String? {
@@ -36,8 +49,8 @@ class MapController constructor(private val context: Context) : OnMapReadyCallba
         } else{
             val list = geocoder.getFromLocation(latitude, longitude, 1)
             if (list != null) {
-                if (list.isEmpty()) ret = null
-                else ret = list[0].getAddressLine(0)
+                ret = if (list.isEmpty()) null
+                else list[0].getAddressLine(0)
             }
         }
 
@@ -59,8 +72,8 @@ class MapController constructor(private val context: Context) : OnMapReadyCallba
             val list = geocoder.getFromLocationName(name, 1)
 
             if (list != null) {
-                if (list.isEmpty()) ret = null
-                else ret = LatLng(list[0].latitude, list[0].longitude)
+                ret = if (list.isEmpty()) null
+                else LatLng(list[0].latitude, list[0].longitude)
             }
         }
 

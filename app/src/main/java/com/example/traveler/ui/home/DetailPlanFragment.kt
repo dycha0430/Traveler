@@ -16,7 +16,7 @@ class DetailPlanFragment : BaseFragment<DetailPlanFragmentBinding, HomeViewModel
     private lateinit var mapController: MapController
 
     override fun initUi(savedInstanceState: Bundle?) {
-        mapController = MapController(requireContext())
+        mapController = MapController(requireActivity().applicationContext, viewModel.selectedTripPlan.value!!.destination)
         mapView = binding.map
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(mapController)
