@@ -1,6 +1,6 @@
 package com.example.traveler.model
 
-import com.google.android.material.timepicker.TimeFormat
+import java.time.LocalDateTime
 import java.util.Date
 
 enum class STATE(private val state_str: String) {
@@ -38,8 +38,8 @@ data class Schedule(
     val id: Int,
     val cost: Int,
     val memo: String,
-    val startTime: TimeFormat,
-    val endTime: TimeFormat,
+    val startTime: LocalDateTime,
+    val endTime: LocalDateTime,
     val place: Place
 )
 

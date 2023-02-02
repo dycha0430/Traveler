@@ -47,7 +47,7 @@ class AllTripPlansAdapter constructor(
         fun bind(item: TripPlan) {
             with(binding) {
                 titleTextView.text = item.title
-                destinationTextView.text = item.destination
+                destinationTextView.text = item.destination.name
                 assert(item.participants.isNotEmpty())
                 if (item.participants.size == 1) {
                     participantsTextView.text = "혼자 여행 중"
