@@ -21,7 +21,6 @@ class AllTripPlansAdapter constructor(
         override fun areContentsTheSame(oldItem: TripPlan, newItem: TripPlan): Boolean {
             return oldItem == newItem
         }
-
     }
 ) {
     interface OnClickTripPlanListener {
@@ -37,9 +36,11 @@ class AllTripPlansAdapter constructor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.itemView.setOnClickListener(View.OnClickListener {
-            onClickTripPlanListener.onClick(position)
-        })
+        holder.itemView.setOnClickListener(
+            View.OnClickListener {
+                onClickTripPlanListener.onClick(position)
+            }
+        )
         holder.bind(item)
     }
 

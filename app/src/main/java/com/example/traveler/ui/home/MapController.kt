@@ -20,7 +20,7 @@ class MapController constructor(private val context: Context, private val destin
         googleMap = gMap
         val latLng = getLatLngFromName(destination.name)
         if (latLng != null) {
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom*2))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom * 2))
         }
     }
 
@@ -31,7 +31,7 @@ class MapController constructor(private val context: Context, private val destin
             return
         }
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom*3))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom * 3))
     }
 
     private fun getNameFromLatLng(latitude: Double, longitude: Double): String? {
@@ -46,7 +46,7 @@ class MapController constructor(private val context: Context, private val destin
                     }
                 }
             )
-        } else{
+        } else {
             val list = geocoder.getFromLocation(latitude, longitude, 1)
             if (list != null) {
                 ret = if (list.isEmpty()) null
