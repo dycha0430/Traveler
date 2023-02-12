@@ -14,12 +14,19 @@ class DetailPlanFragment : BaseFragment<DetailPlanFragmentBinding, HomeViewModel
     override val viewModel by activityViewModels<HomeViewModel>()
     private lateinit var mapView: MapView
     private lateinit var mapController: MapController
+    private val dayViewPagerAdapter: DayViewPagerAdapter = DayViewPagerAdapter()
 
     override fun initUi(savedInstanceState: Bundle?) {
         mapController = MapController(requireActivity().applicationContext, viewModel.selectedTripPlan.value!!.destination)
         mapView = binding.map
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(mapController)
+
+        with(binding) {
+            dayViewPager.apply {
+                adapter = dayViewPagerAdapter
+            }
+        }
     }
 
     override fun observeUi() {

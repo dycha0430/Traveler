@@ -18,8 +18,6 @@ data class TripPlan(
     val title: String,
     val destination: Destination,
     val state: STATE,
-    val startDate: Date,
-    val endDate: Date,
     val participants: List<User>,
     val dayPlans: List<DayPlan>
 )
@@ -30,7 +28,9 @@ data class Destination(
 )
 
 data class DayPlan(
+    val id: Int,
     val day: Int,
+    val date: Date,
     val schedules: List<Schedule>
 )
 

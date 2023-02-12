@@ -56,9 +56,11 @@ class AllTripPlansAdapter constructor(
                     participantsTextView.text = item.participants[0].name + "님 외 " + item.participants.size.toString() + "명"
                 }
                 stateTextView.text = item.state.toString()
+
                 val dateFormat = "yy.MM.dd"
-                val startDate = item.startDate.dateToString(dateFormat)
-                val endDate = item.endDate.dateToString(dateFormat)
+                assert(item.dayPlans.isNotEmpty())
+                val startDate = item.dayPlans.first().date.dateToString(dateFormat)
+                val endDate = item.dayPlans.last().date.dateToString(dateFormat)
                 dateTextView.text = "$startDate ~ $endDate"
             }
         }

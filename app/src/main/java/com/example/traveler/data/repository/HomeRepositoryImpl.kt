@@ -13,8 +13,8 @@ val user1 = User("차다윤", listOf())
 val busan = Destination("부산", "")
 val place1 = Place("카페", "부산광역시 남포동")
 val schedule1 = Schedule(0, 10, "맛있는 카페", LocalDateTime.now(), LocalDateTime.now(), place1)
-val dayPlan1 = DayPlan(0, listOf(schedule1))
-val tripPlan1 = TripPlan(0, "즐거운", busan, STATE.PREPARING, Date(), Date(), listOf(user1), listOf(dayPlan1))
+val dayPlan1 = DayPlan(0, 0, Date(), listOf(schedule1))
+val tripPlan1 = TripPlan(0, "즐거운", busan, STATE.PREPARING, listOf(user1), listOf(dayPlan1))
 val tripPlans = listOf(tripPlan1)
 @Singleton
 class HomeRepositoryImpl @Inject constructor() : HomeRepository {
