@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemDayViewPagerBinding
-import com.example.traveler.dateToString
 import com.example.traveler.model.DayPlan
+import java.time.format.DateTimeFormatter
 
-class DayViewPagerAdapter : ListAdapter<DayPlan, DayViewPagerAdapter.ViewHolder>(
+class DayViewPagerAdapter constructor(
+    private val onClickAddScheduleBtnListener: OnClickAddScheduleBtnListener,
+    private val onClickScheduleListener: SchedulesAdapter.OnClickScheduleListener
+) : ListAdapter<DayPlan, DayViewPagerAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<DayPlan>() {
         override fun areItemsTheSame(oldItem: DayPlan, newItem: DayPlan): Boolean {
             return oldItem.id == newItem.id
@@ -21,6 +24,9 @@ class DayViewPagerAdapter : ListAdapter<DayPlan, DayViewPagerAdapter.ViewHolder>
         }
     }
 ) {
+    interface OnClickAddScheduleBtnListener {
+        fun onClick()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -32,18 +38,22 @@ class DayViewPagerAdapter : ListAdapter<DayPlan, DayViewPagerAdapter.ViewHolder>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+        holder.scheduleAdapter.submitList(item.schedules)
         // TODO: button callback
     }
 
     inner class ViewHolder(private val binding: ItemDayViewPagerBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val scheduleAdapter: SchedulesAdapter = SchedulesAdapter()
+        val scheduleAdapter: SchedulesAdapter = SchedulesAdapter(onClickScheduleListener)
         fun bind(item: DayPlan) {
             with(binding) {
                 val dateFormat = "MM/dd (E)"
-                dateTextView.text = item.date.dateToString(dateFormat)
+                dateTextView.text = item.date.format(DateTimeFormatter.ofPattern(dateFormat))
                 scheduleRecyclerView.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                     adapter = scheduleAdapter
+                }
+                scheduleAddBtn.setOnClickListener {
+                    onClickAddScheduleBtnListener.onClick()
                 }
             }
         }

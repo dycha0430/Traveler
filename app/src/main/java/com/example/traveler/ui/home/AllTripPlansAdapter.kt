@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemTripPlanBinding
 import com.example.traveler.dateToString
+import com.example.traveler.getStateColor
 import com.example.traveler.model.TripPlan
+import java.time.format.DateTimeFormatter
 
 class AllTripPlansAdapter constructor(
     private val onClickTripPlanListener: OnClickTripPlanListener
@@ -56,11 +58,12 @@ class AllTripPlansAdapter constructor(
                     participantsTextView.text = item.participants[0].name + "님 외 " + item.participants.size.toString() + "명"
                 }
                 stateTextView.text = item.state.toString()
+                stateTextView.setBackgroundColor(getStateColor(binding.root.context, item.state))
 
                 val dateFormat = "yy.MM.dd"
                 assert(item.dayPlans.isNotEmpty())
-                val startDate = item.dayPlans.first().date.dateToString(dateFormat)
-                val endDate = item.dayPlans.last().date.dateToString(dateFormat)
+                val startDate = item.dayPlans.first().date.format(DateTimeFormatter.ofPattern(dateFormat))
+                val endDate = item.dayPlans.last().date.format(DateTimeFormatter.ofPattern(dateFormat))
                 dateTextView.text = "$startDate ~ $endDate"
             }
         }

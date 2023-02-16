@@ -25,11 +25,10 @@
             android:paddingBottom="@dimen/detail_title_padding">
 
             <TextView
-                android:id="@+id/detailTitleTextView"
+                android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:maxWidth="90dp"
                 android:singleLine="true"
                 android:text="제주도"
                 android:textColor="@color/white"
@@ -45,7 +44,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detailStateTextView"
+                android:id="@+id/state_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -59,7 +58,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/datePickerButton"
+                android:id="@+id/date_picker_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
@@ -71,7 +70,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/map_wrapper"
         android:layout_width="0dp"
         android:layout_height="300dp"
         app:cardCornerRadius="10dp"
@@ -88,13 +87,13 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/dayViewPager"
-        android:layout_width="0dp"
+        android:id="@+id/day_view_pager"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/map_wrapper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
