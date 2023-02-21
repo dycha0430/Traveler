@@ -1,4 +1,4 @@
-package com.example.traveler.ui.home
+package com.example.traveler.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.traveler.base.BaseFragment
-import com.example.traveler.databinding.DetailPlanFragmentBinding
 import com.example.traveler.getStateColor
 import com.example.domain.model.Schedule
+import com.example.traveler.databinding.DetailPlanFragmentBinding
+import com.example.traveler.ui.home.*
 import com.google.android.gms.maps.MapView
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.format.DateTimeFormatter

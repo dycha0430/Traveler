@@ -1,9 +1,8 @@
-package com.example.traveler.ui.home
+package com.example.traveler.ui.detail
 
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,11 @@ import androidx.fragment.app.activityViewModels
 import com.example.traveler.R
 import com.example.traveler.databinding.AddScheduleDialogBinding
 import com.example.domain.model.Schedule
+import com.example.traveler.ui.home.HomeViewModel
 import com.example.traveler.util.NumberTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Calendar
 
 class AddScheduleBottomSheetDialog constructor(private val is_modify: Boolean, private val is_init: Boolean) : BottomSheetDialogFragment() {
     val tagging = "AddScheduleBottomSheetDialog"

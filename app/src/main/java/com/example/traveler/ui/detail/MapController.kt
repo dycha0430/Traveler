@@ -1,10 +1,9 @@
-package com.example.traveler.ui.home
+package com.example.traveler.ui.detail
 
 import android.content.Context
 import android.location.Geocoder
 import android.widget.Toast
 import com.example.traveler.R
-import com.example.domain.model.Destination
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

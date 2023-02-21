@@ -10,6 +10,6 @@ class CreateScheduleUseCaseImpl @Inject constructor(
     private val homeRepository: HomeRepository
 ) : CreateScheduleUseCase {
     override fun invoke(args: Schedule): Flow<Unit> {
-        TODO("Not yet implemented")
+        return homeRepository.createSchedule(args)
     }
 }
