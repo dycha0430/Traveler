@@ -4,14 +4,14 @@ import android.content.Context
 import android.location.Geocoder
 import android.widget.Toast
 import com.example.traveler.R
-import com.example.traveler.model.Destination
+import com.example.domain.model.Destination
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import java.util.*
 
-class MapController constructor(private val context: Context, private val destination: Destination) : OnMapReadyCallback {
+class MapController constructor(private val context: Context, private val destination: com.example.domain.model.Destination) : OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
     private var geocoder = Geocoder(context, Locale.getDefault())
     private val zoom: Float = 5F

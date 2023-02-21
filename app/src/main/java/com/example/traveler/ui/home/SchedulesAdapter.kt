@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemScheduleBinding
-import com.example.traveler.model.Schedule
+import com.example.domain.model.Schedule
 import java.time.format.DateTimeFormatter
 
 class SchedulesAdapter constructor(

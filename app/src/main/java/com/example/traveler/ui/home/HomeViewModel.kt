@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.traveler.base.BaseViewModel
 import com.example.traveler.base.Event
-import com.example.traveler.model.Place
-import com.example.traveler.model.Schedule
-import com.example.traveler.model.TripPlan
-import com.example.traveler.usecase.GetAllTripPlansUseCase
+import com.example.domain.model.Place
+import com.example.domain.model.Schedule
+import com.example.domain.model.TripPlan
+import com.example.domain.usecase.GetAllTripPlansUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -50,5 +50,11 @@ class HomeViewModel @Inject constructor(
 
     fun clickSchedule(schedule: Schedule) {
         _selectedSchedule.value = schedule
+    }
+
+    fun postSchedule(schedule: Schedule) {
+        viewModelScope.launch {
+
+        }
     }
 }

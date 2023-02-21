@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemDayViewPagerBinding
-import com.example.traveler.model.DayPlan
+import com.example.domain.model.DayPlan
 import java.time.format.DateTimeFormatter
 
 class DayViewPagerAdapter constructor(

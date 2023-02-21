@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.traveler.base.BaseFragment
 import com.example.traveler.databinding.DetailPlanFragmentBinding
 import com.example.traveler.getStateColor
-import com.example.traveler.model.Schedule
+import com.example.domain.model.Schedule
 import com.google.android.gms.maps.MapView
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.format.DateTimeFormatter

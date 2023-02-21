@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.traveler.databinding.ItemTripPlanBinding
 import com.example.traveler.dateToString
 import com.example.traveler.getStateColor
-import com.example.traveler.model.TripPlan
+import com.example.domain.model.TripPlan
 import java.time.format.DateTimeFormatter
 
 class AllTripPlansAdapter constructor(
