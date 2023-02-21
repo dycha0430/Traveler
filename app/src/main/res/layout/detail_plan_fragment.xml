@@ -7,32 +7,34 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/main_color"
         android:backgroundTint="@color/main_color"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/detail_title_padding"
             android:paddingTop="@dimen/detail_title_padding"
-            android:paddingBottom="@dimen/detail_title_padding"
-            android:paddingLeft="@dimen/detail_title_padding">
+            android:paddingBottom="@dimen/detail_title_padding">
 
             <TextView
-                android:id="@+id/detailTitleTextView"
+                android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="90dp"
                 android:background="@null"
                 android:singleLine="true"
                 android:text="제주도"
                 android:textColor="@color/white"
                 android:textSize="@dimen/detail_title_size"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,44 +44,56 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detailStateTextView"
-                android:background="@color/trip_prepare"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:id="@+id/state_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
+                android:background="@color/trip_prepare"
+                android:gravity="center"
                 android:padding="10dp"
+                android:text="여행중"
+                android:textColor="@color/white"
                 android:textSize="10sp"
-                android:text="여행중"/>
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/datePickerButton"
+                android:id="@+id/date_picker_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/outline_bg"
-                android:textSize="13sp"
                 android:layout_marginLeft="15dp"
+                android:background="@drawable/outline_bg"
                 android:padding="10dp"
                 android:text="22.01.02 ~ 22.01.03"
-                />
+                android:textSize="13sp" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:id="@+id/map_wrapper"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp">
+        app:layout_constraintTop_toBottomOf="@+id/app_bar">
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.google.android.gms.maps.MapFragment"/>
+            android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/day_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map_wrapper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailPlanFragment"
-        android:name="com.example.traveler.ui.home.DetailPlanFragment"
+        android:name="com.example.traveler.ui.detail.DetailPlanFragment"
         android:label="DetailPlanFragment"
         tools:layout="@layout/detail_plan_fragment"/>
 </navigation>

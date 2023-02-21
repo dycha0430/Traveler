@@ -4,4 +4,6 @@
     <string name="trip_ing">여행 중</string>
     <string name="trip_done">여행 완료</string>
     <string name="error_find_location">위치를 찾을 수 없습니다.</string>
+    <string name="error_start_time">시작 시간이 종료 시간보다 늦습니다. 다시 선택해주세요.</string>
+    <string name="error_end_time">종료 시간이 시작 시간보다 이릅니다. 다시 선택해주세요.</string>
 </resources>

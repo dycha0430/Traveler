@@ -2,4 +2,7 @@
 <resources>
     <dimen name="detail_title_size">27sp</dimen>
     <dimen name="detail_title_padding">15dp</dimen>
+    <dimen name="schedule_height">100dp</dimen>
+    <dimen name="schedule_inner_margin">20dp</dimen>
+    <dimen name="dialog_margin">10dp</dimen>
 </resources>
