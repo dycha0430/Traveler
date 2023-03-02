@@ -23,12 +23,12 @@ data class TripPlan(
     val id: UUID = UUID.randomUUID()
     constructor(title: String, destination: Destination, participants: List<User>, startDate: LocalDateTime, days: Int) : this(title, destination,
         STATE.PREPARING, participants, List<DayPlan>(days) {
-        DayPlan(true, it, LocalDateTime.from(startDate).plusDays(it.toLong()))
+        DayPlan(it, LocalDateTime.from(startDate).plusDays(it.toLong()))
     })
 
     constructor(participants: List<User>) : this("테스트 제목", Destination(),
         STATE.TRAVELING, participants, List<DayPlan>(3) {
-        DayPlan(true, it, LocalDateTime.now().plusDays(it.toLong()))
+        DayPlan(it, LocalDateTime.now().plusDays(it.toLong()))
     })
 
     fun addSchedule(day: Int, schedule: Schedule) {
@@ -50,7 +50,7 @@ data class DayPlan(
     val schedules: MutableList<Schedule>
 ) {
     val id: UUID = UUID.randomUUID()
-    constructor(test: Boolean, day: Int, date: LocalDateTime) : this(day, date, mutableListOf(
+    constructor(day: Int, date: LocalDateTime) : this(day, date, mutableListOf(
         Schedule(), Schedule()
     ))
 }

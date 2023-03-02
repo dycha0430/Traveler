@@ -1,0 +1,18 @@
+query DayPlansQuery($tripPlanId: ID!) {
+    dayPlans(tripPlanId: $tripPlanId) {
+        id
+        day
+        date
+        scheduleIds {
+            id
+            memo
+            cost
+            place {
+                name
+                address
+            }
+            startTime
+            endTime
+        }
+    }
+}

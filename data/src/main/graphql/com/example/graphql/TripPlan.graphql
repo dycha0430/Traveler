@@ -1,0 +1,18 @@
+
+query AllTripPlansQuery {
+    tripPlans: tripPlans {
+        ...TripPlanDto
+    }
+}
+
+query DetailTripPlanQuery($tripPlanId: ID!) {
+    tripPlan(tripPlanId: $tripPlanId) {
+        ...DetailTripPlanDto
+    }
+}
+
+mutation CreateTripPlanMutation($input: CreateTripPlanInput) {
+    createTripPlan(input: $input) {
+        id
+    }
+}

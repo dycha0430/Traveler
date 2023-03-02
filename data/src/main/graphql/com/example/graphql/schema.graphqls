@@ -1,0 +1,180 @@
+scalar DateTime
+
+type User {
+  id: ID!
+
+  name: String
+
+  tripPlanIds: [ID!]!
+}
+
+type Destination {
+  id: ID!
+
+  name: String
+
+  imageUrl: String
+}
+
+type Schedule {
+  id: ID!
+
+  cost: Int
+
+  memo: String
+
+  startTime: DateTime
+
+  endTime: DateTime
+
+  place: Place!
+}
+
+type DayPlan {
+  id: ID!
+
+  day: Int
+
+  date: DateTime
+
+  scheduleIds: [ID!]
+}
+
+type TripPlan {
+  id: ID!
+
+  title: String
+
+  destination: ID!
+
+  state: State!
+
+  participantIds: [ID!]
+
+  dayPlanIds: [ID!]
+}
+
+type Place {
+  name: String
+
+  address: String
+}
+
+enum State {
+  PREPARING
+
+  TRAVELING
+
+  DONE
+}
+
+input CreateTripPlanInput {
+  title: String
+
+  destinationId: ID!
+
+  participantId: ID!
+
+  startDate: DateTime
+
+  totalDay: Int
+}
+
+input AddScheduleInput {
+  tripPlanId: ID!
+
+  day: Int!
+
+  cost: Int
+
+  memo: String
+
+  startTime: DateTime
+
+  endTime: DateTime
+
+  placeName: String
+
+  placeAddress: String
+}
+
+input CreateUserInput {
+  name: String
+}
+
+input UpdateScheduleInput {
+  scheduleId: ID!
+
+  cost: Int
+
+  memo: String
+
+  startTime: DateTime
+
+  endTime: DateTime
+}
+
+type AllTripPlanOutput {
+  id: ID!
+
+  title: String
+
+  destination: Destination
+
+  state: State!
+
+  participantIds: [ID!]
+
+  dayPlanIds: [ID!]
+}
+
+type DetailTripPlanOutput {
+  id: ID!
+
+  title: String
+
+  destination: Destination
+
+  state: State!
+
+  participantIds: [User!]
+
+  dayPlanIds: [ID!]
+}
+
+type DayPlanOutput {
+  id: ID!
+
+  day: Int
+
+  date: DateTime
+
+  scheduleIds: [Schedule!]
+}
+
+type Query {
+  tripPlans: [AllTripPlanOutput]
+
+  destinations: [Destination]
+
+  users: [User]
+
+  dayPlans(tripPlanId: ID!): [DayPlanOutput]
+
+  tripPlan(tripPlanId: ID!): [DetailTripPlanOutput]
+}
+
+type Mutation {
+  createTripPlan(input: CreateTripPlanInput): TripPlan
+
+  addSchedule(input: AddScheduleInput): Schedule
+
+  createUser(input: CreateUserInput): User
+
+  updateSchedule(input: UpdateScheduleInput): Schedule
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

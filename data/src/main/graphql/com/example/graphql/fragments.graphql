@@ -1,0 +1,23 @@
+fragment TripPlanDto on AllTripPlanOutput {
+    id
+    title
+    state
+    destination {
+        name
+        imageUrl
+    }
+    participantIds
+}
+
+fragment DetailTripPlanDto on DetailTripPlanOutput {
+    title
+    state
+    destination {
+        name
+        imageUrl
+    }
+    participantIds {
+        name
+    }
+    dayPlanIds
+}

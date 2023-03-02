@@ -11,8 +11,11 @@ val user1 = User()
 val tripPlan1 = TripPlan(listOf(user1))
 val tripPlans = listOf(tripPlan1)
 @Singleton
-class HomeRepositoryImpl @Inject constructor() : HomeRepository {
+class HomeRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+) : HomeRepository {
     override fun getAllTripPlans(): Flow<List<TripPlan>> {
+        apiService.getAllTripPlans()
         return flow {
             emit(tripPlans)
         }

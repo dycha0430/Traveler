@@ -1,0 +1,11 @@
+mutation AddScheduleMutation($input: AddScheduleInput) {
+    addSchedule(input: $input) {
+        id
+    }
+}
+
+mutation UpdateScheduleMutation($input: UpdateScheduleInput) {
+    updateSchedule(input: $input) {
+        id
+    }
+}
