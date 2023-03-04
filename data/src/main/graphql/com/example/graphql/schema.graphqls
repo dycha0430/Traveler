@@ -3,7 +3,7 @@ scalar DateTime
 type User {
   id: ID!
 
-  name: String
+  name: String!
 
   tripPlanIds: [ID!]!
 }
@@ -11,7 +11,7 @@ type User {
 type Destination {
   id: ID!
 
-  name: String
+  name: String!
 
   imageUrl: String
 }
@@ -19,13 +19,13 @@ type Destination {
 type Schedule {
   id: ID!
 
-  cost: Int
+  cost: Int!
 
   memo: String
 
-  startTime: DateTime
+  startTime: DateTime!
 
-  endTime: DateTime
+  endTime: DateTime!
 
   place: Place!
 }
@@ -33,31 +33,35 @@ type Schedule {
 type DayPlan {
   id: ID!
 
-  day: Int
+  day: Int!
 
-  date: DateTime
+  date: DateTime!
 
-  scheduleIds: [ID!]
+  scheduleIds: [ID!]!
 }
 
 type TripPlan {
   id: ID!
 
-  title: String
+  title: String!
 
   destination: ID!
 
   state: State!
 
-  participantIds: [ID!]
+  participantIds: [ID!]!
 
-  dayPlanIds: [ID!]
+  dayPlanIds: [ID!]!
+
+  startDate: DateTime!
+
+  endDate: DateTime!
 }
 
 type Place {
-  name: String
+  name: String!
 
-  address: String
+  address: String!
 }
 
 enum State {
@@ -69,15 +73,15 @@ enum State {
 }
 
 input CreateTripPlanInput {
-  title: String
+  title: String!
 
   destinationId: ID!
 
   participantId: ID!
 
-  startDate: DateTime
+  startDate: DateTime!
 
-  totalDay: Int
+  totalDay: Int!
 }
 
 input AddScheduleInput {
@@ -85,21 +89,21 @@ input AddScheduleInput {
 
   day: Int!
 
-  cost: Int
+  cost: Int!
 
   memo: String
 
-  startTime: DateTime
+  startTime: DateTime!
 
-  endTime: DateTime
+  endTime: DateTime!
 
-  placeName: String
+  placeName: String!
 
-  placeAddress: String
+  placeAddress: String!
 }
 
 input CreateUserInput {
-  name: String
+  name: String!
 }
 
 input UpdateScheduleInput {
@@ -114,46 +118,34 @@ input UpdateScheduleInput {
   endTime: DateTime
 }
 
-type AllTripPlanOutput {
+type TripPlanOutput {
   id: ID!
 
-  title: String
+  title: String!
 
-  destination: Destination
+  destination: Destination!
 
   state: State!
 
-  participantIds: [ID!]
+  participantIds: [User!]!
 
-  dayPlanIds: [ID!]
-}
+  startDate: DateTime!
 
-type DetailTripPlanOutput {
-  id: ID!
-
-  title: String
-
-  destination: Destination
-
-  state: State!
-
-  participantIds: [User!]
-
-  dayPlanIds: [ID!]
+  endDate: DateTime!
 }
 
 type DayPlanOutput {
   id: ID!
 
-  day: Int
+  day: Int!
 
-  date: DateTime
+  date: DateTime!
 
-  scheduleIds: [Schedule!]
+  scheduleIds: [Schedule!]!
 }
 
 type Query {
-  tripPlans: [AllTripPlanOutput]
+  tripPlans: [TripPlanOutput]
 
   destinations: [Destination]
 
@@ -161,7 +153,7 @@ type Query {
 
   dayPlans(tripPlanId: ID!): [DayPlanOutput]
 
-  tripPlan(tripPlanId: ID!): [DetailTripPlanOutput]
+  tripPlan(tripPlanId: ID!): TripPlanOutput
 }
 
 type Mutation {

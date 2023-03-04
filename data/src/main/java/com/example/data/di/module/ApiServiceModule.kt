@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApiServiceModule {
     companion object {
-        const val BASE_URL = "http://localhost:4000/"
+        const val BASE_URL = "http://121.130.182.137:8080/"
     }
 
     @Provides

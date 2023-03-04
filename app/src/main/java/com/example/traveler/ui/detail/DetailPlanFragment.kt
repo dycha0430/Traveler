@@ -52,16 +52,16 @@ class DetailPlanFragment : BaseFragment<DetailPlanFragmentBinding, HomeViewModel
     override fun observeUi() {
         with(viewModel) {
             observe(selectedTripPlan) {
-                dayViewPagerAdapter.submitList(it.dayPlans)
-                with(binding) {
-                    titleTextView.text = it.title
-                    val dateFormat = "MM.dd"
-                    val startDate = it.dayPlans.first().date.format(DateTimeFormatter.ofPattern(dateFormat))
-                    val endDate = it.dayPlans.last().date.format(DateTimeFormatter.ofPattern(dateFormat))
-                    datePickerBtn.text = "$startDate ~ $endDate"
-                    stateTextView.text = it.state.toString()
-                    stateTextView.setBackgroundColor(getStateColor(binding.root.context, it.state))
-                }
+//                dayViewPagerAdapter.submitList(it.dayPlans)
+//                with(binding) {
+//                    titleTextView.text = it.title
+//                    val dateFormat = "MM.dd"
+//                    val startDate = it.dayPlans.first().date.format(DateTimeFormatter.ofPattern(dateFormat))
+//                    val endDate = it.dayPlans.last().date.format(DateTimeFormatter.ofPattern(dateFormat))
+//                    datePickerBtn.text = "$startDate ~ $endDate"
+//                    stateTextView.text = it.state.toString()
+//                    stateTextView.setBackgroundColor(getStateColor(binding.root.context, it.state))
+//                }
             }
 
             observeEvent(loadingEvent) {

@@ -1,41 +1,61 @@
 package com.example.data
 
-import android.database.Observable
 import android.util.Log
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
-import com.example.domain.model.TripPlan
-//import com.example.graphql.AllTripPlansQuery
-import kotlinx.coroutines.CoroutineScope
+import com.example.graphql.AllTripPlansQuery
+import com.example.graphql.DayPlansQuery
+import com.example.graphql.adapter.AllTripPlansQuery_ResponseAdapter
+import com.example.graphql.fragment.TripPlanDto
+import com.example.graphql.selections.AllTripPlansQuerySelections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ApiService @Inject constructor(
-    baseUrl: String,
+    private val baseUrl: String,
 //    apiHeaderInterceptor: ApiHeaderInterceptor
 ) {
     private val apolloClient = ApolloClient.Builder()
         .serverUrl(baseUrl)
-        .okHttpClient(
-            OkHttpClient.Builder()
-//                .addInterceptor(apiHeaderInterceptor)
-                .build()
-        )
         .build()
+//        .okHttpClient(
+//            OkHttpClient.Builder()
+//                .addInterceptor(apiHeaderInterceptor)
+//                .build()
+//        )
 
-    fun getAllTripPlans() { //: Observable<List<TripPlan>> {
-        GlobalScope.launch(Dispatchers.Main) {
-//            apolloClient.query(AllTripPlansQuery()).toFlow().collect {
-//                Log.d("DAYUN: GET ALL TRIP PLANS: ", "${it.data?.tripPlans}")
-//            }
+    fun getDayPlans(tripPlanId: String) {
+        val flow = apolloClient.query(DayPlansQuery(tripPlanId))
+            .toFlow()
+    }
+
+    fun getAllTripPlans() : Flow<List<TripPlanDto>> {
+        val flow = apolloClient.query(AllTripPlansQuery())
+            .toFlow()
+            .map { item ->
+            val tripPlanList = mutableListOf<TripPlanDto>()
+            item.data!!.tripPlans?.forEach {
+                if (it != null) {
+                    tripPlanList.add(it.tripPlanDto)
+                }
+            }
+            tripPlanList
         }
+
+        return flow
+//        GlobalScope.launch(Dispatchers.IO) {
+//            flow.collect {
+//                Log.d("DAYUN: COLLECT!", it.data?.tripPlans?.get(0).toString())
+//            }
+//        }
 
 //        return apolloClient.query(AllTripPlansQuery())
 //            .rx()

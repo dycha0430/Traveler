@@ -1,4 +1,4 @@
-fragment TripPlanDto on AllTripPlanOutput {
+fragment TripPlanDto on TripPlanOutput {
     id
     title
     state
@@ -6,18 +6,32 @@ fragment TripPlanDto on AllTripPlanOutput {
         name
         imageUrl
     }
-    participantIds
+    participantIds {
+        ...UserDto
+    }
+    startDate
+    endDate
 }
 
-fragment DetailTripPlanDto on DetailTripPlanOutput {
-    title
-    state
-    destination {
-        name
-        imageUrl
+fragment UserDto on User {
+    id
+    name
+    tripPlanIds
+}
+
+fragment DayPlanDto on DayPlanOutput {
+    id
+    day
+    date
+    scheduleIds {
+        id
+        cost
+        memo
+        place {
+            name
+            address
+        }
+        startTime
+        endTime
     }
-    participantIds {
-        name
-    }
-    dayPlanIds
 }
