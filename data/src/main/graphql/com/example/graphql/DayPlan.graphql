@@ -1,0 +1,5 @@
+query DayPlansQuery($tripPlanId: ID!) {
+    dayPlans(tripPlanId: $tripPlanId) {
+        ...DayPlanDto
+    }
+}

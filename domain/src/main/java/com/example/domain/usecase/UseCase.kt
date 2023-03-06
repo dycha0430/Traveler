@@ -10,3 +10,4 @@ interface UseCase<T, A> {
 
 interface GetAllTripPlansUseCase : UseCase<List<TripPlan>, Unit>
 interface CreateScheduleUseCase : UseCase<Unit, Schedule>
+interface CreateTripPlanUseCase : UseCase<Unit, TripPlan>

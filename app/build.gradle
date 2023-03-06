@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
     id("org.jlleitschuh.gradle.ktlint-idea") version "10.0.0"
-//    id("com.apollographql.apollo3").version "3.1.0"
     id 'kotlin-kapt'
     id("com.google.dagger.hilt.android")
     id 'androidx.navigation.safeargs'
@@ -32,10 +31,6 @@ android {
     viewBinding {
         enabled = true
     }
-
-//    apollo {
-//        packageName.set("com.traveler.graphql")
-//    }
 
     buildTypes {
         release {
@@ -87,7 +82,6 @@ dependencies {
     testImplementation 'androidx.test:core:1.0.0'
     // Optional -- Mockito framework
     testImplementation 'org.mockito:mockito-core:1.10.19'
-//    implementation "com.apollographql.apollo3:apollo-runtime:3.1.0"
 
     // dagger hilt
     implementation("com.google.dagger:hilt-android:2.44")

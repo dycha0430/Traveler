@@ -1,0 +1,38 @@
+fragment TripPlanDto on TripPlanOutput {
+    id
+    title
+    state
+    destination {
+        id
+        name
+        imageUrl
+    }
+    participantIds {
+        ...UserDto
+    }
+    startDate
+    endDate
+}
+
+fragment UserDto on User {
+    id
+    name
+    tripPlanIds
+}
+
+fragment DayPlanDto on DayPlanOutput {
+    id
+    day
+    date
+    scheduleIds {
+        id
+        cost
+        memo
+        place {
+            name
+            address
+        }
+        startTime
+        endTime
+    }
+}

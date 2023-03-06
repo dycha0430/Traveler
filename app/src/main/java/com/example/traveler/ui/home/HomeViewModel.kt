@@ -8,6 +8,7 @@ import com.example.traveler.base.Event
 import com.example.domain.model.Place
 import com.example.domain.model.Schedule
 import com.example.domain.model.TripPlan
+import com.example.domain.usecase.CreateTripPlanUseCase
 import com.example.domain.usecase.GetAllTripPlansUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getAllTripPlansUseCase: GetAllTripPlansUseCase
+    private val getAllTripPlansUseCase: GetAllTripPlansUseCase,
+    private val createTripPlanUseCase: CreateTripPlanUseCase
 ) : BaseViewModel() {
     private val _tripPlans = MutableLiveData<ArrayList<TripPlan>>()
     val tripPlans: LiveData<ArrayList<TripPlan>> = _tripPlans
@@ -55,6 +57,13 @@ class HomeViewModel @Inject constructor(
     fun postSchedule(schedule: Schedule) {
         viewModelScope.launch {
 
+        }
+    }
+
+    fun createTripPlan(tripPlan: TripPlan) {
+        _loadingEvent.value = Event(false)
+        viewModelScope.launch {
+            createTripPlanUseCase(tripPlan)
         }
     }
 }

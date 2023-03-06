@@ -1,8 +1,9 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id("com.apollographql.apollo3").version("3.7.4")
 }
 
 android {
@@ -10,13 +11,21 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.data"
         minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+//    apollo {
+//        packageName.set("com.example.graphql")
+//    }
+    apollo {
+        service("service") {
+            packageName.set("com.example.graphql")
+        }
     }
 
     buildTypes {
@@ -51,4 +60,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.activity:activity-ktx:1.6.1"
     implementation "androidx.fragment:fragment-ktx:1.5.5"
+
+    // apollo graphql
+    implementation("com.apollographql.apollo3:apollo-runtime:3.7.4")
+//    implementation "com.apollographql.apollo3:apollo-runtime:3.1.0"
+//    implementation("com.apollographql.apollo:apollo-runtime-kotlin:3.0.0-alpha03")
 }

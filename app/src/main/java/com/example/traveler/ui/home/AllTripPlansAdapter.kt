@@ -52,18 +52,18 @@ class AllTripPlansAdapter constructor(
                 titleTextView.text = item.title
                 destinationTextView.text = item.destination.name
                 assert(item.participants.isNotEmpty())
-                if (item.participants.size == 1) {
+                val participantNum = item.participants.size
+                if (participantNum == 1) {
                     participantsTextView.text = "혼자 여행 중"
                 } else {
-                    participantsTextView.text = item.participants[0].name + "님 외 " + item.participants.size.toString() + "명"
+                    participantsTextView.text = item.participants[0].name + "님 외 " + participantNum.toString() + "명"
                 }
                 stateTextView.text = item.state.toString()
                 stateTextView.setBackgroundColor(getStateColor(binding.root.context, item.state))
 
                 val dateFormat = "yy.MM.dd"
-                assert(item.dayPlans.isNotEmpty())
-                val startDate = item.dayPlans.first().date.format(DateTimeFormatter.ofPattern(dateFormat))
-                val endDate = item.dayPlans.last().date.format(DateTimeFormatter.ofPattern(dateFormat))
+                val startDate = item.startDate.format(DateTimeFormatter.ofPattern(dateFormat))
+                val endDate = item.endDate.format(DateTimeFormatter.ofPattern(dateFormat))
                 dateTextView.text = "$startDate ~ $endDate"
             }
         }
