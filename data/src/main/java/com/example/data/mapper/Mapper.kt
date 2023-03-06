@@ -25,6 +25,7 @@ fun stateMapper(state: State): STATE {
 
 fun destinationMapper(destination: TripPlanDto.Destination): com.example.domain.model.Destination {
     return com.example.domain.model.Destination(
+        id = destination.id,
         name = destination.name,
         imageUrl = destination.imageUrl ?: ""
     )

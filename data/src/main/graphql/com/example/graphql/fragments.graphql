@@ -3,6 +3,7 @@ fragment TripPlanDto on TripPlanOutput {
     title
     state
     destination {
+        id
         name
         imageUrl
     }

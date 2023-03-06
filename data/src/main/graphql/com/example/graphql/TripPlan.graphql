@@ -4,7 +4,7 @@ query AllTripPlansQuery {
     }
 }
 
-mutation CreateNewTripPlanMutation($input: CreateTripPlanInput) {
+mutation CreateNewTripPlanMutation($input: CreateTripPlanInput!) {
     createTripPlan(input: $input) {
         id
     }

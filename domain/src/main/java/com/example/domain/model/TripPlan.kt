@@ -26,27 +26,14 @@ data class TripPlan(
 //    val participants: List<User>,
 //    val dayPlans: List<DayPlan>
 ) {
-//    constructor(title: String, destination: Destination, participants: List<User>, startDate: LocalDateTime, days: Int) : this("", title, destination,
-//        STATE.PREPARING, participants, List<DayPlan>(days) {
-//        DayPlan(it, LocalDateTime.from(startDate).plusDays(it.toLong()))
-//    })
-//
-//    constructor(participants: List<User>) : this("", "테스트 제목", Destination(),
-//        STATE.TRAVELING, participants, List<DayPlan>(3) {
-//        DayPlan(it, LocalDateTime.now().plusDays(it.toLong()))
-//    })
-
-    fun addSchedule(day: Int, schedule: Schedule) {
-//        assert(day < dayPlans.size)
-//        dayPlans[day].schedules.add(schedule)
-    }
 }
 
 data class Destination(
+    val id: String,
     val name: String,
     val imageUrl: String
 ) {
-    constructor() : this("테스트 목적지", "테스트 이미지주소")
+    constructor() : this("", "테스트 목적지", "테스트 이미지주소")
 }
 
 data class DayPlan(

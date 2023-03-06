@@ -4,10 +4,12 @@ import android.util.Log
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import com.example.graphql.AllTripPlansQuery
+import com.example.graphql.CreateNewTripPlanMutation
 import com.example.graphql.DayPlansQuery
 import com.example.graphql.adapter.AllTripPlansQuery_ResponseAdapter
 import com.example.graphql.fragment.TripPlanDto
 import com.example.graphql.selections.AllTripPlansQuerySelections
+import com.example.graphql.type.CreateTripPlanInput
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +17,8 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
+import java.time.LocalDateTime
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -37,6 +41,16 @@ class ApiService @Inject constructor(
             .toFlow()
     }
 
+    fun createTripPlan(title: String, destinationId: String, participantId: String, startDate: LocalDateTime, totalDay: Int) : Flow<Unit> {
+        return apolloClient.mutation(CreateNewTripPlanMutation(input = CreateTripPlanInput(
+            title = title,
+            destinationId = destinationId,
+            participantId = participantId,
+            startDate = startDate,
+            totalDay = totalDay
+        ))).toFlow().map {  }
+    }
+
     fun getAllTripPlans() : Flow<List<TripPlanDto>> {
         val flow = apolloClient.query(AllTripPlansQuery())
             .toFlow()
@@ -51,42 +65,5 @@ class ApiService @Inject constructor(
         }
 
         return flow
-//        GlobalScope.launch(Dispatchers.IO) {
-//            flow.collect {
-//                Log.d("DAYUN: COLLECT!", it.data?.tripPlans?.get(0).toString())
-//            }
-//        }
-
-//        return apolloClient.query(AllTripPlansQuery())
-//            .rx()
-//            .doOnNext(::handleError)
-//            .map { item ->
-//                val list = mutableListOf<StoryDto>()
-//                item.data!!.storyList.list.forEach {
-//                    list.add(it.fragments.storyDto)
-//                }
-////                val list = mutableListOf<OnStageStory>()
-////                item.data!!.storyList.list.forEach {
-////                    list.add(
-////                        OnStageStory(
-////                            id = it.fragments.storyDto.storyId,
-////                            title = it.fragments.storyDto.name,
-////                            shortDesc = it.fragments.storyDto.shortDesc ?: "",
-////                            isFinished = it.fragments.storyDto.isFinished,
-////                            imageUrl = it.fragments.storyDto.mainImageFile?.link ?: "",
-////                            wideImageUrl = it.fragments.storyDto.wideImageFile?.link ?: "",
-////                            introImageUrl = it.fragments.storyDto.introImageFile?.link ?: ""
-////                        )
-////                    )
-////                }
-//
-//                list
-//            }
     }
-
-//    private fun handleError(response: Response<*>) {
-//        if (response.hasErrors()) {
-//            Log.e("Api service handle error", response.errors?.first()?.message ?: "")
-//        }
-//    }
 }

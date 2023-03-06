@@ -1,10 +1,10 @@
-mutation AddScheduleMutation($input: AddScheduleInput) {
+mutation AddScheduleMutation($input: AddScheduleInput!) {
     addSchedule(input: $input) {
         id
     }
 }
 
-mutation UpdateScheduleMutation($input: UpdateScheduleInput) {
+mutation UpdateScheduleMutation($input: UpdateScheduleInput!) {
     updateSchedule(input: $input) {
         id
     }
